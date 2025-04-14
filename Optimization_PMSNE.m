@@ -112,7 +112,7 @@ D_t = D_t .* Y;
 D = D_t;
 % fine-tuning for W, cause the W is the weights of A*X, while input of MLKNN is X
 iter = 1;
-lambdaw = size(X,1)/size(X,2);
+lambdaw = HyperPara.alpha;  % 0.1*size(X,1)/size(X,2);
 while(1)
     I = diag(1./max(sqrt(sum((W).*(W),2)),eps));
     W = (X'*X+lambdaw*I)\(X'*D);
