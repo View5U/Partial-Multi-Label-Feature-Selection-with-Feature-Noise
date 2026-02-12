@@ -1,5 +1,4 @@
-clc;
-clean;
+clear;
 data_name = 'corel16k001.mat';
 load(data_name);
 
@@ -122,4 +121,5 @@ if evamode == 1
     title(data_name);
     legend('Location', 'best');
 end
+
 
