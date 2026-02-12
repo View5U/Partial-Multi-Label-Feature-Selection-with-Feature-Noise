@@ -1,5 +1,5 @@
 clc;
-clear;
+clean;
 data_name = 'corel16k001.mat';
 load(data_name);
 
@@ -38,10 +38,10 @@ PL = getPartialLabel(train_target', partialRate, 0);
 [num_instance, num_feature] = size(train_data);
 [num_label, ~]   = size(train_target);
 
-clear_data = [train_data; test_data];
-claer_train_data = train_data;
-clear_test_data = test_data;
-noisy_data = FeatureNoise(clear_data, feaNoiseRate);
+clean_data = [train_data; test_data];
+clean_train_data = train_data;
+clean_test_data = test_data;
+noisy_data = FeatureNoise(clean_data, feaNoiseRate);
 train_data = noisy_data(1:num_instance,:);
 test_data = noisy_data(num_instance+1:end,:);
 
@@ -122,3 +122,4 @@ if evamode == 1
     title(data_name);
     legend('Location', 'best');
 end
+
