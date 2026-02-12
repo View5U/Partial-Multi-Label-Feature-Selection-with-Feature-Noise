@@ -1,5 +1,5 @@
 clear;
-data_name = 'corel16k001.mat';
+data_name = 'birds.mat';
 load(data_name);
 
 rng(0);
@@ -60,6 +60,8 @@ HyperPara.epsilon = 4;                              % A1
 HyperPara.maxIter = 100;
 HyperPara.minLossMargin = 0.001;
 [W, A, Distribution] = Optimization_PMSNE(train_data, PL, HyperPara);
+% train_data = A*train_data;
+W = W(1:end-1,:);
 
 [dumb, index] = sort(sum(W.*W,2),'descend');
 Num = 10;
@@ -109,6 +111,7 @@ Avg_Result(:,1) = mean(iterResult,2);
 Avg_Result(:,2) = std(iterResult,1,2);
 
 if evamode == 1
+    model_name = "PMSNE";
     x = 2:2:50;
     figure;
     hold on;
@@ -121,5 +124,4 @@ if evamode == 1
     title(data_name);
     legend('Location', 'best');
 end
-
 
